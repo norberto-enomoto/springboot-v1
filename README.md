@@ -1,6 +1,5 @@
 # Workshop Mão na Massa | Criação de um Microsserviço (CRUD) em Spring Boot utilizando o VS Code
 
-**Pré Requisitos:** -> CI/CD
 
 **1. Instalação e configuração do OpenJDK 11**
 - Windows - Chocolatey: https://community.chocolatey.org/packages/openjdk11.
