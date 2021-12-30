@@ -9,7 +9,7 @@ RUN mvn -DskipTests -f /home/app/pom.xml clean package
 #
 # Package stage
 #
-FROM openjdk:11.0.13-jdk-oraclelinux7
+FROM adoptopenjdk/openjdk11
 COPY --from=build /home/app/target/springboot-0.0.1-SNAPSHOT.jar /usr/local/lib/springboot-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/usr/local/lib/springboot-0.0.1-SNAPSHOT.jar"]
