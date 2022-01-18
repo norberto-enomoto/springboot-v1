@@ -13,22 +13,16 @@ import lombok.extern.slf4j.Slf4j;
 public class UserService {
 
   @Autowired
-  private final UserRepository userRepository;
-
-  // @Autowired
-  public UserService(UserRepository userRepository) {
-    this.userRepository = userRepository;
-  }
-
+  private UserRepository userRepository;
+  
+  
   public Iterable<UserModel> getUsers() {
-    log.info("Recuperando todos users");
-    log.info("teste do Github Action");
+    log.info("Recuperando todos users");    
     return userRepository.findAll();
   }
 
   public UserModel getUser(Integer id) {
-    log.info("Recuperando user pelo id {}", id);
-    log.info("teste do Github Action");
+    log.info("Recuperando user pelo id {}", id);    
     return userRepository.findById(id).orElseThrow(() -> {
       return new RuntimeException(String.format("User=[%s] não foi encontrado", id));
     });
