@@ -13,8 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserService {
 
   @Autowired
-  private final UserRepository userRepository;
-
+  private UserRepository userRepository;
 
   public Iterable<UserModel> getUsers() {
     log.info("Recuperando todos users");    
