@@ -16,7 +16,7 @@ public class UserService {
   private UserRepository userRepository;
 
   public Iterable<UserModel> getUsers() {
-    log.info("Recuperando todos users");    
+    log.info("Recuperando todos users");  
     return userRepository.findAll();
   }
 
