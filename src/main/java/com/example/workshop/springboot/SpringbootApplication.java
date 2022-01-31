@@ -18,7 +18,7 @@ public class SpringbootApplication {
     public void init(){
         TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));   // It will set UTC timezone
         log.info("Spring boot application running America/Sao_Paulo timezone : " + new Date());   // It will print UTC timezone
-        log.info("tag: latest");  
+        log.info("tag: main");  
     }
 		
 	public static void main(String[] args) {
