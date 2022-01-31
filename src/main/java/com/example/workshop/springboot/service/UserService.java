@@ -38,8 +38,7 @@ public class UserService {
 
   public UserModel createUser(String name, String email) {
     UserModel user = UserModel.builder().name(name).email(email).build();
-    log.info("Criando {}", user);
-    log.info("teste do Github Action");
+    log.info("Criando {}", user);    
     return userRepository.save(user);
   }
 
