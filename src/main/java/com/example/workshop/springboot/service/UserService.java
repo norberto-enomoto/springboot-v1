@@ -1,5 +1,6 @@
 package com.example.workshop.springboot.service;
 
+import com.example.workshop.springboot.exception.ResourseException;
 import com.example.workshop.springboot.model.UserModel;
 import com.example.workshop.springboot.repository.UserRepository;
 
@@ -21,17 +22,17 @@ public class UserService {
     return userRepository.findAll();
   }
 
-  public UserModel getUser(Long id) {
+  public UserModel getUser(Long id) throws ResourseException {
     log.info("Recuperando user pelo id {}", id);    
     return userRepository.findById(id).orElseThrow(() -> {
-      return new RuntimeException(String.format("User=[%s] não foi encontrado", id));
+      return new ResourseException(String.format("User=[%s] não foi encontrado", id));
     });
   }
 
-  public UserModel delete(Long id) {
+  public UserModel delete(Long id) throws ResourseException {
     log.info("Apagando user pelo id {}", id);
     UserModel user = userRepository.findById(id).orElseThrow(() -> {
-      return new RuntimeException(String.format("User=[%s] não foi encontrado", id));
+      return new ResourseException(String.format("User=[%s] não foi encontrado", id));
     });
     userRepository.deleteById(id);
     return user;
@@ -44,10 +45,10 @@ public class UserService {
     return userRepository.save(user);
   }
 
-  public UserModel updateUser(Long id, String name, String email) {
+  public UserModel updateUser(Long id, String name, String email) throws ResourseException {
     log.info("Atualizando user pelo id {}", id);
     UserModel user = userRepository.findById(id).orElseThrow(() -> {
-      return new RuntimeException(String.format("User=[%s] não foi encontrado", id));
+      return new ResourseException(String.format("User=[%s] não foi encontrado", id));
     });
 
     if (name != null) {

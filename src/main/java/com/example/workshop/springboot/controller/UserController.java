@@ -2,6 +2,7 @@ package com.example.workshop.springboot.controller;
 
 
 import com.example.workshop.springboot.dto.UserDTO;
+import com.example.workshop.springboot.exception.ResourseException;
 import com.example.workshop.springboot.model.UserModel;
 import com.example.workshop.springboot.service.UserService;
 
@@ -39,7 +40,7 @@ public class UserController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<UserModel> getPerson(@PathVariable Long id) {
+  public ResponseEntity<UserModel> getPerson(@PathVariable Long id) throws ResourseException {
     UserModel user = userService.getUser(id);
     return ResponseEntity.ok(user);
   }
@@ -52,13 +53,13 @@ public class UserController {
 
   @PutMapping("/{id}")
   public ResponseEntity<UserModel> createUser(@PathVariable Long id,
-      @RequestBody @Validated UserDTO userDTO) {
+      @RequestBody @Validated UserDTO userDTO) throws ResourseException {
     UserModel user = userService.updateUser(id, userDTO.getName(), userDTO.getEmail());
     return ResponseEntity.ok(user);
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<UserModel> deletePerson(@PathVariable Long id) {
+  public ResponseEntity<UserModel> deletePerson(@PathVariable Long id) throws ResourseException {
     UserModel user = userService.delete(id);
     return ResponseEntity.ok(user);
   }
