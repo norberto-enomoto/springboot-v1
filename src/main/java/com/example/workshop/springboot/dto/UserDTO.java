@@ -1,7 +1,8 @@
 package com.example.workshop.springboot.dto;
 
-import javax.validation.constraints.NotBlank;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,10 +13,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
-
-  @NotBlank
-  private String name;
   
-  @NotBlank
+  @NotEmpty(message = "Nome não pode ser vazio")
+  private String name;  
+  
+  @NotEmpty(message = "Nome não pode ser vazio")
   private String email;
 }
