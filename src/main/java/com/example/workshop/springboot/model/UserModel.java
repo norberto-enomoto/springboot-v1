@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class UserModel {
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
   @NotEmpty(message = "Nome não pode ser vazio")  
   private String name;
   @Email(message = "Seu e-mail nao é valido, por favor digite um e-mail valido")

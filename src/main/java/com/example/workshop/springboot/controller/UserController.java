@@ -39,7 +39,7 @@ public class UserController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<UserModel> getPerson(@PathVariable Integer id) {
+  public ResponseEntity<UserModel> getPerson(@PathVariable Long id) {
     UserModel user = userService.getUser(id);
     return ResponseEntity.ok(user);
   }
@@ -51,14 +51,14 @@ public class UserController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<UserModel> createUser(@PathVariable Integer id,
+  public ResponseEntity<UserModel> createUser(@PathVariable Long id,
       @RequestBody @Validated UserDTO userDTO) {
     UserModel user = userService.updateUser(id, userDTO.getName(), userDTO.getEmail());
     return ResponseEntity.ok(user);
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<UserModel> deletePerson(@PathVariable Integer id) {
+  public ResponseEntity<UserModel> deletePerson(@PathVariable Long id) {
     UserModel user = userService.delete(id);
     return ResponseEntity.ok(user);
   }

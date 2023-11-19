@@ -21,14 +21,14 @@ public class UserService {
     return userRepository.findAll();
   }
 
-  public UserModel getUser(Integer id) {
+  public UserModel getUser(Long id) {
     log.info("Recuperando user pelo id {}", id);    
     return userRepository.findById(id).orElseThrow(() -> {
       return new RuntimeException(String.format("User=[%s] não foi encontrado", id));
     });
   }
 
-  public UserModel delete(Integer id) {
+  public UserModel delete(Long id) {
     log.info("Apagando user pelo id {}", id);
     UserModel user = userRepository.findById(id).orElseThrow(() -> {
       return new RuntimeException(String.format("User=[%s] não foi encontrado", id));
@@ -44,7 +44,7 @@ public class UserService {
     return userRepository.save(user);
   }
 
-  public UserModel updateUser(Integer id, String name, String email) {
+  public UserModel updateUser(Long id, String name, String email) {
     log.info("Atualizando user pelo id {}", id);
     UserModel user = userRepository.findById(id).orElseThrow(() -> {
       return new RuntimeException(String.format("User=[%s] não foi encontrado", id));
